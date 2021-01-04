@@ -197,6 +197,15 @@ match_srxi_as_c_srxi (const struct riscv_opcode *op, insn_t insn)
 
 const struct riscv_opcode riscv_opcodes[] =
 {
+
+// custom
+{"pallc",       0, INSN_CLASS_I,   "d,s,t",  MATCH_PALLC, MASK_PALLC, match_opcode, 0 },
+{"pdall",       0, INSN_CLASS_I,   "d,s",  MATCH_PDALL, MASK_PDALL, match_opcode, 0 },
+{"pblk",        0, INSN_CLASS_I,   "d,s",  MATCH_PBLK,  MASK_PBLK,  match_opcode, 0 },
+{"publk",       0, INSN_CLASS_I,   "d,s",  MATCH_PUBLK, MASK_PUBLK, match_opcode, 0 },
+{"fwd",         0, INSN_CLASS_I,   "d,s,t",  MATCH_FWD,   MASK_FWD,   match_opcode, 0 },
+// ↑custom
+
 /* name,     xlen, isa,   operands, match, mask, match_func, pinfo.  */
 {"unimp",       0, INSN_CLASS_C,   "",  0, 0xffffU,  match_opcode, INSN_ALIAS },
 {"unimp",       0, INSN_CLASS_I,   "",  MATCH_CSRRW | (CSR_CYCLE << OP_SH_CSR), 0xffffffffU,  match_opcode, 0 }, /* csrw cycle, x0 */

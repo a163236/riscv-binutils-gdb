@@ -20,6 +20,25 @@
 
 #ifndef RISCV_ENCODING_H
 #define RISCV_ENCODING_H
+
+// custom
+// MATCHはOPコードの値
+// MASKはOPコードとfunct3,funct7をマスクするもの＝どれを使うか
+
+// OP_SPECISIAL2命令
+#define MATCH_PALLC        0xb 
+#define MASK_PALLC         0xfe00707f
+#define MATCH_PDALL        0x100b
+#define MASK_PDALL         0xfff0707f
+#define MATCH_PBLK         0x200b
+#define MASK_PBLK          0xfff0707f
+#define MATCH_PUBLK        0x300b
+#define MASK_PUBLK         0xfff0707f
+#define MATCH_FWD          0x400b
+#define MASK_FWD           0xfe00707f
+// ↑custom
+
+
 /* Instruction opcode macros.  */
 #define MATCH_SLLI_RV32 0x1013
 #define MASK_SLLI_RV32  0xfe00707f
@@ -844,6 +863,13 @@
 #define CSR_SCONTEXT 0x7aa
 #endif /* RISCV_ENCODING_H.  */
 #ifdef DECLARE_INSN
+// custom
+DECLARE_INSN(pallc, MATCH_PALLC, MASK_PALLC)
+DECLARE_INSN(pdall, MATCH_PDALL, MASK_PDALL)
+DECLARE_INSN(pblk, MATCH_PBLK, MASK_PBLK)
+DECLARE_INSN(publk, MATCH_PUBLK, MASK_PUBLK)
+DECLARE_INSN(fwd, MATCH_FWD, MASK_FWD)
+// custom
 DECLARE_INSN(slli_rv32, MATCH_SLLI_RV32, MASK_SLLI_RV32)
 DECLARE_INSN(srli_rv32, MATCH_SRLI_RV32, MASK_SRLI_RV32)
 DECLARE_INSN(srai_rv32, MATCH_SRAI_RV32, MASK_SRAI_RV32)
